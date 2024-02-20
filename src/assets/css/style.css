@@ -1,0 +1,91 @@
+.homebanner {
+  background-image: url("../images/homebanner.jpg");
+  height: 100vh;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 100vh;
+  background-size: cover;
+  background-attachment: fixed; /* This makes the background image fixed */
+  overflow: hidden;
+}
+
+.bg-secondary {
+  background-color: #edeef0 !important;
+}
+
+.text-primary {
+  color: #de342f !important;
+}
+.bg-primary {
+  background-color: #de342f !important;
+}
+
+.cursor-pointer {
+  cursor: pointer !important;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+}
+
+.sidebar {
+  height: 90vh !important;
+}
+body {
+  background-color: #edeef0 !important;
+}
+.fs-13px
+{
+    font-size:12px !important;
+}
+.fw-300
+{
+  width:300px !important;
+}
+.w-50px
+{
+  width:236px !important;
+}
+.h-50px
+{
+  height:200px !important;
+}
+.outline-dashed
+{
+  outline-style: dashed !important;
+  outline-color:  #dfdfdf !important;
+}
+.bg-dark
+{
+  background-color: black !important;
+}
+.link-style {
+  text-decoration: none;
+}
+.hover:hover {
+  background-color: #dfdfdf  !important;
+  color: #f0005f !important;
+  border-radius: 5px !important;
+}
+.container {
+  position: relative;
+  width: 50%;
+}
+.w-250px
+{
+width: 250px !important;
+}
+.bg-color
+{
+  background-color:#7f7f7f !important;
+}
