@@ -50,7 +50,7 @@ const Login = () => {
               <Container>
                 <div className="d-flex align-item-center row ">
                   <Col className="py-1" sm={10}>
-                    <img className="mt-3 ms-3 fw-300 " src={logo}></img>
+                    <img className="mt-3  fw-300 " src={logo}></img>
                   </Col>
                 </div>
                 <Row>
@@ -60,7 +60,7 @@ const Login = () => {
                     lg={8}
                     className=" d-none d-sm-none d-md-block d-lg-block "
                   >
-                    <div className="d-flex flex-column text-white align-item-center fw-bold pt-lg-5 pt-2 mb-5">
+                    <div className="d-flex flex-column text-white align-item-center fw-bold pt-lg-5 pt-2 ">
                       <h3 className="fs-3 ms-5 pt-5">Books sports center</h3>
 
                       <h3 className="fs-2 ms-1 pt-5">
@@ -71,7 +71,7 @@ const Login = () => {
                     </div>
                   </Col>
                   <Col sm={6} md={5} lg={4}>
-                    <Card className="w-100  ">
+                    <Card className=" w-100px">
                       <div className="bg-secondary p-3">
                         <div className="flex-column d-flex ">
                           <Row className="pt-3">
