@@ -7,7 +7,7 @@ const Header =()=>{
     const navigate=useNavigate()
     return(
         <>
-  <Navbar className="bg-dark" variant="dark" expand="lg">
+  <Navbar className="bg-dark shadow " variant="dark" expand="lg">
   <img className="ms-2  "  src={logo}></img>
         <Container >
           <Navbar.Toggle aria-controls="navbar-dark-example " />

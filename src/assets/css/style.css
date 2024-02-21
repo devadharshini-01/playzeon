@@ -15,7 +15,20 @@
   background-attachment: fixed; /* This makes the background image fixed */
   overflow: hidden;
 }
+.overlay
+{
+  position: fixed;
 
+  width: 100%; 
+  height: 100%; 
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+ opacity:50px;
+
+}
 .bg-secondary {
   background-color: #edeef0 !important;
 }
@@ -30,12 +43,9 @@
 .cursor-pointer {
   cursor: pointer !important;
 }
-
-.overlay {
-  position: absolute;
-  width: 100%;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+.fw-10px
+{
+  font-size:14px !important;
 }
 
 .sidebar {
@@ -54,11 +64,11 @@ body {
 }
 .w-50px
 {
-  width:236px !important;
+  width:270px !important;
 }
 .h-50px
 {
-  height:200px !important;
+  height:270px !important;
 }
 .outline-dashed
 {
@@ -89,7 +99,35 @@ width: 250px !important;
 {
   background-color:#7f7f7f !important;
 }
-.w-100px
+.w-100
 {
-  width:180% !important;
+  width:350px !important;
+}
+.object-fit {
+  object-fit: cover !important;
+  height: 90px !important;
+}
+.p-5px
+{
+  padding:38px !important;
+}
+.mt-10px
+{
+  margin-top:68px !important;
+}
+.text-color
+{
+  color:#7f7f7f !important;
+}
+.fw-16px
+{
+  font-size:16px !important;
+}
+.w-100px{
+  width: 33% !important;;
+}
+.addbanner
+{
+  width:20px !important;
+  height:20px !important;
 }

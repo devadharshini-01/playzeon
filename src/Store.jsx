@@ -3,8 +3,10 @@ import {thunk} from 'redux-thunk';
 
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { dashboardReducer } from './redux/reducer/DashboardReducerapi';
+import { centerReducer } from './redux/reducer/CenterReducerapi';
 const reducer = combineReducers({
-    dashboard: dashboardReducer
+    dashboard: dashboardReducer,
+    center:centerReducer,
 });
 
 const initialState = {};

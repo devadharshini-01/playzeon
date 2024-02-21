@@ -11,7 +11,7 @@ export const DashboardGetAction = (centerId) => async (dispatch) => {
    
 
         
-        const { data } = await axios.get(`https://0a41-2405-201-e059-b805-e525-da6b-2897-c20e.ngrok-free.app/api/account`,
+        const { data } = await axios.get(` https://abbd-2405-201-e059-b805-ed44-498e-91cd-6527.ngrok-free.app/api/account`,
         {headers:{Authorization:`Bearer ${Token}`}});
         console.log(data);
         await dispatch({

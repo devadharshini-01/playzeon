@@ -12,7 +12,7 @@ const Login = () => {
   const handleValue = async (values) => {
     await axios
       .post(
-        " https://0a41-2405-201-e059-b805-e525-da6b-2897-c20e.ngrok-free.app/api/user-management/login",
+        "  https://abbd-2405-201-e059-b805-ed44-498e-91cd-6527.ngrok-free.app/api/user-management/login",
         values
         // { headers: { "ngrok-skip-browser-warning": "true" } }
       )
@@ -49,9 +49,9 @@ const Login = () => {
             <div className="overlay pt-lg-5 pt-2">
               <Container>
                 <div className="d-flex align-item-center row ">
-                  <Col className="py-1" sm={10}>
+                  <div className="col-sm-10 py-1" >
                     <img className="mt-3  fw-300 " src={logo}></img>
-                  </Col>
+                  </div>
                 </div>
                 <Row>
                   <Col
@@ -71,7 +71,7 @@ const Login = () => {
                     </div>
                   </Col>
                   <Col sm={6} md={5} lg={4}>
-                    <Card className=" w-100px">
+                    <Card className=" w-100 ">
                       <div className="bg-secondary p-3">
                         <div className="flex-column d-flex ">
                           <Row className="pt-3">
@@ -132,7 +132,7 @@ const Login = () => {
                                 <p className="fs-13px text-nowrap m-0">
                                   Don't have an account?
                                 </p>
-                                <p className="text-primary fs-13px ">Signin</p>
+                                <p className="text-primary fs-13px  ">Signin</p>
                               </Col>
                               <Col md={1} lg={1}></Col>
                               <Col md={6} lg={6} className="mt-2">

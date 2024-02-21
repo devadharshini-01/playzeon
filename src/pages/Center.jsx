@@ -7,8 +7,13 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { DashboardGetAction } from "../redux/action/DashboardAPiAction";
+import logo from "../assets/images/addplus.svg"; 
+
 
 const Center = ({ active, setActive }) => {
+  const[edit,setEdit]=useState();
+  const url = edit ? "photos" : "bg-color";
+
   const [response, setResponse] = useState();
   const navigate = useNavigate();
   const Token = localStorage.getItem("accessToken");
@@ -23,7 +28,7 @@ const Center = ({ active, setActive }) => {
     console.log(orgid);
     axios
       .get(
-        `https://0a41-2405-201-e059-b805-e525-da6b-2897-c20e.ngrok-free.app/api/v1/centers?organizationId.equals=${orgid}`,
+        `  https://abbd-2405-201-e059-b805-ed44-498e-91cd-6527.ngrok-free.app/api/v1/centers?organizationId.equals=${orgid}`,
         { headers: { Authorization: `Bearer ${Token}` } }
       )
 
@@ -44,109 +49,70 @@ const Center = ({ active, setActive }) => {
           <Sidebar active={active} setActive={setActive} />
         </Col>
         <Col sm={12} md={10} lg={10}>
-          <Breadcrumb>
-            <Breadcrumb.Item>Locations</Breadcrumb.Item>
+        <Breadcrumb>
+            <Breadcrumb.Item>Center</Breadcrumb.Item>
           </Breadcrumb>
           <hr></hr>
-          {/* <Card className="w-100 border-0 p-4">
-            <Row>
-         
-            <Card className="w-50px h-50px outline-dashed border-0  ">
-              <Icon
-                icon="gg:add"
-                className="mx-auto mt-5"
-                width="75"
-                height="75"
-                onClick={() => navigate("/Add-Center")}
-              />
-
-              <Card.Text className="text-center">Add Location</Card.Text>
       
-              
-            </Card>
-            {console.log(data.data, "1234")}
-            {response?.data?.length ? (
-              response.data.map((item) => (
-                <Card key={item.id} className="container w-250px mb-2 mx-1 ms-2 w-50px h-50px p-3">
-                 
-                    
-                  <Card.Text title={item.title}>
-                    {item.title}
-                  </Card.Text>
-                  <Card.Text streetAddress={item.streetAddress}>
-                    {item.streetAddress}
-                  </Card.Text>
-                  <Card.Text suite={item.suite}>
-                    {item.suite}
-                  </Card.Text>
-                  <Card.Text stateProvince={item.stateProvince}>
-                    {item.stateProvince}
-                  </Card.Text>
-                  <Card.Text startTime={item.startTime}>
-                    {item.startTime}
-                  </Card.Text>
-                  <Card.Text endTime={item.endTime}>
-                    {item.endTime}
-                  </Card.Text>
-                </Card>
-              ))
-            ) : data.loading ? (
-              <Spinner
-                animation="border"
-                role="status"
-                className="spinner"
-              ></Spinner>
-            ) : (
-              "no data found"
-            )}
-            </Row>
-           
-          </Card>
-         */}
-           <Card className="w-100 border-0 p-4">
-        <Row className="justify-content-center">
-          <Card className="w-50px h-50px outline-dashed border-0 p-3 ms-3">
-            <Icon
-              icon="gg:add"
-              className="mx-auto mt-5"
-              width="75"
-              height="75"
-              onClick={() => navigate("/Add-Center")}
-            />
+     
+       <Row>
+       <Card className=" border-0 bg-white p-3">
+    <Row>
+    <Card className="w-50px h-50px outline-dashed border-0 ms-2">
+    <img className="mt-5 mx-auto w-50 " src={logo}></img>
             <Card.Text className="text-center">Add Location</Card.Text>
           </Card>
+       
           {console.log(data.data, "1234")}
           {response?.data?.length ? (
             response.data.map((item) => (
-              <Col xs={12} sm={6} md={6} lg={3} key={item.id} className="mb-4">
-                <Card className="container w-250px h-250px p-3">
-                  
-                <Card.Img
-                            alt="dashboardimage"
-                            className="dashboardimg image mx-auto p-0 "
-                            variant="top"
-                            src={item?.photos[0]?.url}
-                          />
-                  <Card.Text title={item.title}>
+              <Col  md={3} key={item.id} className="mb-4 ">
+             
+
+              
+                <Card className="w-50px h-50px cursor-pointer  ">
+           
+                {item?.photos[0]?.url?  <Card.Img
+              
+             
+            
+              className={`object-fit  mx-auto p-0 ${url === "bg-color" ? "bg-color" : ""}`}
+              variant="top"
+              src={item?.photos[0]?.url}
+              
+            />:<div className="bg-color ">
+                <Card.Text className="text-white mt-10px ms-3" title={item.title}>
                     {item.title}
                   </Card.Text>
-                  <Card.Text streetAddress={item.streetAddress}>
-                    {item.streetAddress}
+              </div>}
+          
+               
+                  
+        
+            
+      <Card.Body >
+       
+        <Card.Text className="fw-10px">
+                  {item.streetAddress},
+    {item.suite}<br />
+    {item.city},
+    {item.stateProvince},
                   </Card.Text>
-                  <Card.Text suite={item.suite}>
-                    {item.suite}
-                  </Card.Text>
-                  <Card.Text stateProvince={item.stateProvince}>
-                    {item.stateProvince}
-                  </Card.Text>
+    
+             
+                 
+                <div className="text-color fw-16px"><b>Busniess hours</b></div>
+                <Card.Text className=" fw-16px">Sun - Sat: {item?.centerHours[0]?.startTime} To  {item?.centerHours[0]?.endTime}</Card.Text>
+       
+    
                 
-                  <Card.Text startTime={item?.centerHours[0]?.startTime}>
-                    {item?.centerHours[0]?.startTime}
-                  </Card.Text>
-                  <Card.Text endTime={item?.centerHours[0]?.endTime}>
-                    {item?.centerHours[0]?.endTime}
-                  </Card.Text>
-                </Card>
+              
+               
+                
+       
+      </Card.Body>
+      
+    </Card>
               </Col>
             ))
           ) : data.loading ? (
@@ -158,10 +124,23 @@ const Center = ({ active, setActive }) => {
           ) : (
             "no data found"
           )}
+    </Row>
+     
+          
+          </Card>
         </Row>
-      </Card>
-        </Col>
-      </Row>
+      
+ 
+          </Col>
+         
+ 
+
+          
+ 
+       </Row>
+
+   
+   
     </>
   );
 };
