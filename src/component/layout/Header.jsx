@@ -8,7 +8,7 @@ const Header =()=>{
     return(
         <>
   <Navbar className="bg-dark shadow " variant="dark" expand="lg">
-  <img className="ms-2  "  src={logo}></img>
+  <img className="ms-2 headerlogo"  src={logo}></img>
         <Container >
           <Navbar.Toggle aria-controls="navbar-dark-example " />
           <p className="text-white ms-5 ">ABC Sports Organization</p>

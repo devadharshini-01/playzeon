@@ -3,10 +3,11 @@ import {thunk} from 'redux-thunk';
 
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { dashboardReducer } from './redux/reducer/DashboardReducerapi';
-import { centerReducer } from './redux/reducer/CenterReducerapi';
+import { centerReducer, postReducer } from './redux/reducer/CenterReducerapi';
 const reducer = combineReducers({
     dashboard: dashboardReducer,
     center:centerReducer,
+    addcenter:postReducer,
 });
 
 const initialState = {};

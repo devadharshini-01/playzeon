@@ -61,11 +61,12 @@ body {
 .fw-300
 {
   width:300px !important;
+  margin-left:-250px !important;
 }
 
 .h-50px
 {
-  height:360px !important;
+  height:348px !important;
 }
 .outline-dashed
 {
@@ -133,4 +134,24 @@ width: 250px !important;
 {
   color: 
   #2d77db !important;
+}
+.bannerimage
+{
+  width:250px !important;
+}
+.padding-bottom
+{
+  padding-bottom:80px !important;
+}
+.margin-left
+{
+  margin-left:-161px!important;
+}
+.w-90px
+{
+  width:320px !important;
+}
+.headerlogo
+{
+  width:210px !important;
 }

@@ -8,11 +8,17 @@ console.log(timezone,"++++");
     return(
         <>
    <FormSelect>
-    {/* {timezone.data.map((map)=>{
-
-    })} */}
-      <option value="first"></option>
-      
+ 
+      {/* <option value="first"></option> */}
+    
+              {timezone?.map(val => {
+                return (
+                  <>
+                    {' '}
+                    <option value={val}>{val.displayNam}</option>{' '}
+                  </>
+                );
+              })}
     </FormSelect>
         </>
     )

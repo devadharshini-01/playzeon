@@ -28,7 +28,7 @@ const Center = ({ active, setActive }) => {
     console.log(orgid);
     axios
       .get(
-        `https://gnat-saving-sturgeon.ngrok-free.app/api/v1/centers?organizationId.equals=${orgid}`,
+        `https://grouse-humane-terribly.ngrok-free.app/api/v1/centers?organizationId.equals=${orgid}`,
         {
           headers: {
             "ngrok-skip-browser-warning": "true", 
@@ -52,26 +52,26 @@ const Center = ({ active, setActive }) => {
 
   return (
     <>
-    <div className="h-100">
-    <Header />
+
+<Header />
+    <Row className="vh-100">
     <Col md={2} lg={2} className="d-none d-sm-none d-md-block d-lg-block">
-          <Sidebar active={active} setActive={setActive} />
+          <Sidebar active={active} setActive={setActive}  />
         </Col>
-    </div>
-    <div className="h-100">
-    <Row>
-       
-       <Col sm={12} md={10} lg={10}>
-         <Breadcrumb>
-           <Breadcrumb.Item>Center</Breadcrumb.Item>
+      
+    
+       <Col sm={12} md={10} lg={10} xl={10}>
+
+        <Breadcrumb >
+           <Breadcrumb.Item >Center</Breadcrumb.Item>
          </Breadcrumb>
          <hr></hr>
 
-         <Row>
-           <Col md={3} lg={12}>
+         <Row >
+           <Col md={6} lg={12}>
              <Card className=" border-0 bg-white p-3">
                <Row>
-                 <Col sm={3}>
+                 <Col sm={3} >
                    <Card className="outline-dashed h-50px border-0 ms-2">
                      <img className=" mt-5 mx-auto w-50 " src={logo} onClick={()=>navigate("/Add-center")}></img>
                      <p className="text-center text-color">Add Center</p>
@@ -81,7 +81,7 @@ const Center = ({ active, setActive }) => {
                  {response?.data?.length ? (
                   response?.data?.map((item) => (
                      <Col lg={3} key={item.id} className="mb-4 ">
-                       <Card className="  cursor-pointer h-50px P-3">
+                       <Card className="  cursor-pointer h-50px P-3" onClick={()=>navigate("/Facilites")}>
                          {item?.photos[0]?.url ? (
                            <Card.Img
                              className={`object-fit  mx-auto p-0 ${
@@ -142,9 +142,20 @@ const Center = ({ active, setActive }) => {
              </Card>
            </Col>
          </Row>
+      
+       
        </Col>
-     </Row>
-    </div>
+  
+    </Row>
+
+  
+
+  
+
+  
+   
+  
+  
       
     </>
   );

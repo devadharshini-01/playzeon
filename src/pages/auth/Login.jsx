@@ -12,7 +12,7 @@ const Login = () => {
   const handleValue = async (values) => {
     await axios
       .post(
-        " https://gnat-saving-sturgeon.ngrok-free.app/api/user-management/login",
+        " https://grouse-humane-terribly.ngrok-free.app/api/user-management/login",
         values
        
       )
@@ -49,8 +49,10 @@ const Login = () => {
             <div className="overlay pt-lg-5 pt-2">
               <Container>
                 <div className="d-flex align-item-center row ">
-                  <div className="col-sm-10 py-1" >
-                    <img className="mt-3  fw-300 " src={logo}></img>
+                  <div className="col-sm-10 " >
+                    <img className="mt-3 d-flex  fw-300 "  src={logo}></img>
+              
+
                   </div>
                 </div>
                 <Row>
@@ -60,14 +62,14 @@ const Login = () => {
                     lg={8}
                     className=" d-none d-sm-none d-md-block d-lg-block "
                   >
-                    <div className="d-flex flex-column text-white align-item-center fw-bold pt-lg-5 pt-2 ">
-                      <h3 className="fs-3 ms-5 pt-5">Books sports center</h3>
+                    <div className="d-flex flex-column text-white margin-left align-item-center fw-bold pt-lg-5 pt-2 ">
+                      <h3 className="fs-3  ms-5 pt-5">Books sports center</h3>
 
-                      <h3 className="fs-2 ms-1 pt-5">
+                      <h3 className="fs-2  mt-1 pt-5">
                         Connect with other players{" "}
                       </h3>
 
-                      <h3 className="fs-3 ms-5 pt-5 ">Signin for lessons </h3>
+                      <h3 className="fs-3 ms-5 pt-5">Signin for lessons </h3>
                     </div>
                   </Col>
                   <Col sm={6} md={5} lg={4}>
@@ -122,7 +124,7 @@ const Login = () => {
 
                             <Button
                               type="submit"
-                              className="w-100 mx-auto mt-3 shadow-sm p-0 bg-primary border-0 p-2"
+                              className="w-90px mx-auto mt-3 shadow-sm w-75px bg-primary border-0 p-2"
                             >
                               Sign in
                             </Button>
