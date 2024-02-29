@@ -18,7 +18,7 @@ import DatePicker from "react-datepicker";
 import { useEffect, useState } from "react";
 import Select from "../component/custom/Select";
 import { useSelector, useDispatch } from "react-redux";
-import { CenterAction } from "../redux/action/CenterAction";
+import { CenterAction, CenterPostAction } from "../redux/action/CenterAction";
 import logo from "../assets/images/addbanner.svg";
 import picture from "../assets/images/addimage.svg";
 
@@ -28,6 +28,7 @@ import axios from "axios";
 
 const AddCenter = ({ active, setActive,onChange }) => {
   const navigate = useNavigate();
+ const orgId= localStorage.getItem("orgId")
 
   const [startDate, setStartDate] = useState(new Date());
 //  const[checked,setChecked]=useState()
@@ -36,19 +37,15 @@ const AddCenter = ({ active, setActive,onChange }) => {
 //     setChecked(e.target.checked);
 //   }
   const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(CenterAction());
-  }, []);
 
   const data = useSelector((state) => state.center.centergetapi);
   console.log(data, "+++++");
 
   const handleChange = (values) => {
+    
     // console.log(values,"value from handle change"); 
-    axios.post(`https://grouse-humane-terribly.ngrok-free.app/api/v1/centers`)
-    .then((response)=>{
-  
-    })
+    dispatch(CenterPostAction(values));
+    
   };
 
 
@@ -70,14 +67,46 @@ const AddCenter = ({ active, setActive,onChange }) => {
       validationSchema={schema}
       onSubmit={handleChange}
       initialValues={{
-    Name:"",
-    Street:"",
-    City:"",
-    State:"",
-    Zip:"",
-    Phonenumber:"",
-    email:"",
-
+  //   Name:"",
+  //   Street:"",
+  //   City:"",
+  //   State:"",
+  //   Zip:"",
+  //   Phonenumber:"",
+  //   email:"",
+  //   organization: {
+  //    id:orgId
+  // },
+	// timezone: {
+  //   id: " ",
+  // },
+  displayName: false,
+  title: " ",
+  streetAddress: " ",
+  suite: " ",
+  city: " ",
+  stateProvince: " ",
+  zipCode: " ",
+  phoneNumber: " ",
+  email: " ",
+  photos: [],
+  organization: {
+    id: orgId
+  },
+  timezone: {
+    id: " ",
+  },
+  centerHours: [
+    {
+      weekday:"",
+      startTime: "",
+      endTime: "",
+      createdAt: "",
+      updatedAt: "",
+    },
+  ],
+  createdAt: "",
+  updatedAt:"",
       }}
       
     >

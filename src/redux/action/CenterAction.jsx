@@ -10,7 +10,7 @@ export const CenterAction = () => async (dispatch) => {
   });
   try {
     const { data } = await axios.get(
-      `https://grouse-humane-terribly.ngrok-free.app/api/timezones`,
+      `https://b12f-2405-201-e059-b805-d0f4-e085-aa34-86ce.ngrok-free.app/api/timezones`,
       {
         headers: {
           "ngrok-skip-browser-warning": "true",
@@ -30,16 +30,19 @@ export const CenterAction = () => async (dispatch) => {
 };
 
 //post
-export const CenterPostAction=()=>async(dispatch)=>{
-  const Token = localStorage.getItem("accessToken")
+export const CenterPostAction=(values)=>async(dispatch)=>{
+  console.log("CenterPostAction Token");
+ const Token= localStorage.getItem("accessToken")
+  console.log(Token,"Token");
   await dispatch({
     type:centerpostaction.REQUEST,
     payload:{loading:true},
   })
  try{
-  const {value}=await axios.post(`https://grouse-humane-terribly.ngrok-free.app/api/v1/centers`,
+  console.log("test ");
+  const {value} = await axios.post(`https://b12f-2405-201-e059-b805-d0f4-e085-aa34-86ce.ngrok-free.app/api/v1/centers`,values,
   {
-    headers:{
+    headers: {
       "ngrok-skip-browser-warning": "true",
       "Authorization": `Bearer ${Token}`
     }
@@ -52,6 +55,7 @@ export const CenterPostAction=()=>async(dispatch)=>{
   });
 
  }catch(error){
+  console.log("err test ");
   await dispatch({
     type:centerpostaction.ERROR,
     payload:{loading:false,value:{}}
