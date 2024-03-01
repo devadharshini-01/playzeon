@@ -1,16 +1,17 @@
 import axios from "axios";
 import { centerpostaction, centertconstants } from "../constants/CenterApiConstant";
+import { useParams } from "react-router-dom";
 
 export const CenterAction = () => async (dispatch) => {
   const Token = localStorage.getItem("accessToken")
-  
+const {id}=useParams();
   await dispatch({
     type:centertconstants.REQUEST,
     payload: { loading: true },
   });
   try {
     const { data } = await axios.get(
-      `https://b12f-2405-201-e059-b805-d0f4-e085-aa34-86ce.ngrok-free.app/api/timezones`,
+      `http://192.168.29.26:8080/api/timezones id=${id}`,
       {
         headers: {
           "ngrok-skip-browser-warning": "true",
@@ -40,7 +41,7 @@ export const CenterPostAction=(values)=>async(dispatch)=>{
   })
  try{
   console.log("test ");
-  const {value} = await axios.post(`https://b12f-2405-201-e059-b805-d0f4-e085-aa34-86ce.ngrok-free.app/api/v1/centers`,values,
+  const {value} = await axios.post(`http://192.168.29.26:8080/api/v1/centers`,values,
   {
     headers: {
       "ngrok-skip-browser-warning": "true",

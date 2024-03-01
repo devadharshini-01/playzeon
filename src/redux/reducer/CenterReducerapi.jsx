@@ -2,7 +2,7 @@ import {
   centerpostaction,
   centertconstants,
 } from "../constants/CenterApiConstant";
-import { CenterPostAction } from "../action/CenterAction";
+
 
 let initialValues = {
   centergetapi: [],
@@ -11,6 +11,8 @@ let initialValues = {
 export const centerReducer = (value = initialValues, action) => {
   switch (action?.type) {
     case centertconstants.REQUEST:
+      // console.log({ centergetapi: action?.payload},"payload" );
+
       return { centergetapi: action?.payload };
     case centertconstants.SUCCESS:
       return { centergetapi: action?.payload };

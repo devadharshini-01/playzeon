@@ -12,7 +12,7 @@ const Login = () => {
   const handleValue = async (values) => {
     await axios
       .post(
-        "https://b12f-2405-201-e059-b805-d0f4-e085-aa34-86ce.ngrok-free.app/api/user-management/login",
+        "http://192.168.29.26:8080/api/user-management/login",
         values
        
       )
