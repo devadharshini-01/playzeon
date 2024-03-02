@@ -30,27 +30,27 @@ import Formselect from "../component/custom/Formselect";
 const AddCenter = ({ active, setActive }) => {
   const navigate = useNavigate();
   const orgId = localStorage.getItem("orgId");
-
-
-
+ const id = localStorage.getItem("id");
   const [startDate, setStartDate] = useState(new Date());
-
+  const [selectedTimezoneId, setSelectedTimezoneId] = useState("");
   const dispatch = useDispatch();
 
   const data = useSelector((state) => state.center.centergetapi);
-  const value = useSelector ((state)=>state.addcenter.centerpostapi);
+  const value = useSelector((state) => state.addcenter.centerpostapi);
   console.log(data, "+++++");
-  console.log(value,"value");
+  console.log(value, "value");
 
   const handleChange = (values) => {
     // console.log(values,"value from handle change");
     dispatch(CenterPostAction(values));
   };
-useEffect(()=>{
-  dispatch(CenterAction ())
-},[])
-  
-  
+  useEffect(() => {
+    dispatch(CenterAction());
+  }, []);
+  const handleTimezone = (timezoneId) => {
+    setSelectedTimezoneId(timezoneId); 
+    // console.log(timezoneId,"time");
+  };
 
   const schema = yup.object().shape({
     title: yup.string().required("Name is  required "),
@@ -61,22 +61,29 @@ useEffect(()=>{
     Phonenumber: yup.string().required("Phonenumber is  required "),
     email: yup.string().email().required("email is required "),
     Suite: yup.string().required("suite is required"),
-  
   });
+  const handle45Submit = (values) => {
 
+    values.timezone.id = selectedTimezoneId;
+  
+    console.log("values123", selectedTimezoneId, values);
+    dispatch(CenterPostAction(values));
+    navigate("/Center")
+  };
+  
   return (
     <>
       <Formik
         validationSchema={schema}
-        onSubmit={handleChange}
+        onSubmit={handle45Submit}
         initialValues={{
           displayName: true,
           title: "",
           StreetAddress: "",
-        
+
           Suite: "",
           City: "",
-          stateProvince: "",
+          stateProvince: "dr",
           ZipCode: "",
           email: "",
           organization: {
@@ -97,16 +104,16 @@ useEffect(()=>{
           centerUsers: [
             {
               user: {
-                id: "303ebb60-7de0-4088-95bd-07052e722417",
+                id: id,
               },
             },
           ],
           timezone: {
-            id:""
+            id: selectedTimezoneId,
           },
         }}
       >
-        {({ handleSubmit, handleChange, values, errors }) => (
+        {({ handleSubmit, handleChange, values, errors,setFieldValue }) => (
           <Form noValidate onSubmit={handleSubmit}>
             <Header />
 
@@ -251,13 +258,14 @@ useEffect(()=>{
                       </Row>
                       <Row>
                         <Col md={4} lg={4}>
-                          <div className="mb-2">
-                            Time Zone
-                            <span className="text-primary">
-                              <b>*</b>
-                            </span>
-                          </div>
-                        <Formselect data={data}/>
+                          <Formselect
+                            label="Timezone"
+          
+                            data={data}
+                            onChange={handleTimezone}
+                            mandatory={true}
+                            selectedTimezoneId={selectedTimezoneId}
+                          />
                         </Col>
                       </Row>
                       <div className="mt-2 text-color">

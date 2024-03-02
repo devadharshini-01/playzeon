@@ -4,6 +4,7 @@ import { dashboardApiConstants } from "../constants/DashboardConstant";
 export const DashboardGetAction = (centerId) => async (dispatch) => {
     const Token = localStorage.getItem("accessToken")
     
+    
     await dispatch({
         type: dashboardApiConstants.REQUEST,
         payload: { loading: true },
@@ -25,6 +26,7 @@ export const DashboardGetAction = (centerId) => async (dispatch) => {
       );
         console.log(data?.orgId,"orgid" );
         localStorage.setItem("orgId",data?.orgId)
+        localStorage.setItem("id",data?.id)
         await dispatch({
             type: dashboardApiConstants.SUCCESS,
             payload: { loading: false, data: data },

@@ -4,14 +4,14 @@ import { useParams } from "react-router-dom";
 
 export const CenterAction = () => async (dispatch) => {
   const Token = localStorage.getItem("accessToken")
-const {id}=useParams();
+
   await dispatch({
     type:centertconstants.REQUEST,
     payload: { loading: true },
   });
   try {
     const { data } = await axios.get(
-      `http://192.168.29.26:8080/api/timezones id=${id}`,
+      `http://192.168.29.26:8080/api/timezones `,
       {
         headers: {
           "ngrok-skip-browser-warning": "true",

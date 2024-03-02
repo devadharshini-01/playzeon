@@ -21,6 +21,7 @@ const Center = ({ active, setActive }) => {
 
   const dispatch = useDispatch();
   const data = useSelector((state) => state.dashboard.dashboardgetapi);
+  console.log(data,"data");
   useEffect(() => {
     dispatch(DashboardGetAction());
   }, []);
