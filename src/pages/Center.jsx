@@ -47,24 +47,24 @@ const Center = ({ active, setActive }) => {
   }, [orgid]);
   useEffect(() => {
     if (data?.orgid) localStorage.setItem("orgId",data?.orgId);
-    console.log(orgid,"AAA")
+   
   }, [data]);
-  console.log(response, "jjhhfd");
-
+  
   return (
     <>
-
-<Header />
-    <Row className="vh-100">
-    <Col md={2} lg={2} className="d-none d-sm-none d-md-block d-lg-block">
+    <div className="overflow-hidden">
+      <div className="vh-100">
+      <Header />
+    <Row>
+    <Col md={2} lg={2} className="d-none d-sm-none d-md-block d-lg-block ">
           <Sidebar active={active} setActive={setActive}  />
         </Col>
       
     
        <Col sm={12} md={10} lg={10} xl={10}>
-
-        <Breadcrumb >
-           <Breadcrumb.Item >Center</Breadcrumb.Item>
+       <div className=" vh-100 overflow-scroll pb-80px">
+       <Breadcrumb >
+           <div className="breadcrumb-item  mt-3 ">Center</div>
          </Breadcrumb>
          <hr></hr>
 
@@ -137,17 +137,30 @@ const Center = ({ active, setActive }) => {
                      className="spinner"
                    ></Spinner>
                  ) : (
-                   "no data found"
+                   ""
                  )}
                </Row>
              </Card>
            </Col>
          </Row>
+       </div>
+ 
+        {/* </div> */}
+
+    
       
        
        </Col>
-  
     </Row>
+  
+      </div>
+ 
+  
+    </div>
+
+
+  
+   
 
   
 

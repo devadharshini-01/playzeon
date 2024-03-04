@@ -7,13 +7,22 @@ const Header =()=>{
     const navigate=useNavigate()
     return(
         <>
-  <Navbar className="bg-dark shadow " variant="dark" expand="lg">
-  <img className="ms-2 headerlogo"  src={logo}></img>
+  {/* <Navbar className="bg-dark shadow " variant="dark" expand="lg">
+    <Row>
+      <Col>
+      <img className="ms-2 headerlogo"  src={logo}></img>
+      </Col>
+    </Row>
+
         <Container >
           <Navbar.Toggle aria-controls="navbar-dark-example " />
-          <p className="text-white ms-5 ">ABC Sports Organization</p>
+  
+           
+          <p className="text-white ">ABC Sports Organization</p>
+      
+
           <Navbar.Collapse
-            className="justify-content-end"
+            className="justify-content-end "
             id="navbar-dark-example "
           >
             <Nav>
@@ -42,23 +51,55 @@ const Header =()=>{
             </Nav>
           </Navbar.Collapse>
         </Container>
-      </Navbar>
+      </Navbar> */}
           {/*   */}
      
-
-
-{/* 
-<Dropdown>
-  <Dropdown.Toggle id="dropdown-basic">
-    Devadharshini
-  </Dropdown.Toggle>
-
-  <Dropdown.Menu>
-    <Dropdown.Item href="#/action-1">Center info</Dropdown.Item>
-    <Dropdown.Item href="#/action-2">Log out</Dropdown.Item>
-  </Dropdown.Menu>
-</Dropdown> */}
+          <Navbar expand="lg" className="bg-dark">
+          <img className="ms-2 headerlogo"  src={logo}></img>
+          <div className="text-white  fw-20px ms-2">ABC Sprots Center</div>
+      <Container>
    
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end ">
+          <Nav>
+          <Navbar.Collapse
+            className="justify-content-end "
+            id="navbar-dark-example "
+          >
+            <Nav >
+              <span>
+       
+                <Icon className="text-white mt-1" icon="ic:baseline-account-circle" width="30" height="30"  />
+              </span>
+              <NavDropdown
+              className="text-white"
+                id="nav-dropdown-dark-example"
+                title={<span className="text-white ">Admin</span>}
+             
+                menuVariant="dark"
+              >
+                <NavDropdown.Item
+                  onClick={() => navigate("CenterInfo")}
+               
+                >
+                  Center info
+                </NavDropdown.Item>
+                <NavDropdown.Item
+                  onClick={() => navigate("/")}
+              
+                >
+                  Log out
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+          </Navbar.Collapse>
+          </Nav>
+        
+        </Navbar.Collapse>
+      </Container>
+    </Navbar>
+
+
    
         
           

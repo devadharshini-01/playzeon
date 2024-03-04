@@ -6,7 +6,7 @@ const Phonenumber=({label,type,className,values,onChange,isInvalid,errors,name})
               <Form>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
         <Form.Label>{label}</Form.Label>
-        <Form.Control type={type} name={name} className={className}values={values} onChange={onChange} isInvalid={isInvalid} errors={errors}/>
+        <Form.Control type={type} name={name} className={className}values={values}  onChange={onChange} isInvalid={isInvalid} errors={errors}/>
       </Form.Group>
    
      

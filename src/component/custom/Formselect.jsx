@@ -1,7 +1,7 @@
 import { Form, Placeholder } from "react-bootstrap";
 import FormSelect from "react-bootstrap/FormSelect";
-const Formselect = ({ data, label, mandatory, onChange,selectedTimezoneId }) => {
-  console.log(data, "datagdfgfgggdfgdfhdfhdfhd ");
+const Formselect = ({ data, label, mandatory, onChange,selectedTimezoneId,Placeholder,timezoneError }) => {
+ 
 
   return (
     <>
@@ -26,7 +26,8 @@ const Formselect = ({ data, label, mandatory, onChange,selectedTimezoneId }) => 
             <b>{mandatory ? "*" : ""}</b>
           </span>
         </Form.Label>
-        <Form.Select required Placeholder={Placeholder} onChange={(e) => onChange(e.target.value)} value={selectedTimezoneId}>
+        <Form.Select required  onChange={(e) => onChange(e.target.value)} value={selectedTimezoneId}>
+          <option value={null}>Select the Timezone</option>
           {data?.data?.length > 0 &&
             data?.data?.map((value, i) => {
               return (
@@ -38,9 +39,9 @@ const Formselect = ({ data, label, mandatory, onChange,selectedTimezoneId }) => 
               );
             })}
         </Form.Select>
-        <Form.Control.Feedback type="invalid">
+      {  timezoneError&&<p >
           Please select an option.
-        </Form.Control.Feedback>
+        </p>}
       </Form.Group>
     </>
   );

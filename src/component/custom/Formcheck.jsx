@@ -1,15 +1,16 @@
-import { useState } from "react"
+import { useState } from "react";
 
-const FormCheck =()=>{
-    const[checked,setChecked]=useState()
-
-    const handleChecked=(e)=>{
-      setChecked(e.target.checked);
-    }
-    return(
-        <>
-         <Form.Check type="checkbox" onChange={(e)=>handleChecked(e)}/>
-        </>
-    )
-}
-export default FormCheck
+const FormCheck = ({ onChange, checked, name, value }) => {
+  return (
+    <>
+      <Form.Check
+        type="checkbox"
+        onChange={(event) => onChange(event.target.value)}
+        name={name}
+        value={value}
+        checked={checked}
+      />
+    </>
+  );
+};
+export default FormCheck;
