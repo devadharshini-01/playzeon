@@ -11,7 +11,7 @@ export const CenterAction = () => async (dispatch) => {
   });
   try {
     const { data } = await axios.get(
-      `http://192.168.29.26:8080/api/timezones `,
+      `https://262a-2405-201-e059-b805-e4b7-e07a-11a3-9edb.ngrok-free.app/api/timezones `,
       {
         headers: {
           "ngrok-skip-browser-warning": "true",
@@ -41,7 +41,7 @@ export const CenterPostAction=(values)=>async(dispatch)=>{
   })
  try{
   console.log("test ");
-  const {value} = await axios.post(`http://192.168.29.26:8080/api/v1/centers`,values,
+  const {value} = await axios.post(`https://262a-2405-201-e059-b805-e4b7-e07a-11a3-9edb.ngrok-free.app/api/v1/centers`,values,
   {
     headers: {
       "ngrok-skip-browser-warning": "true",

@@ -56,7 +56,7 @@ const Header =()=>{
      
           <Navbar expand="lg" className="bg-dark">
           <img className="ms-2 headerlogo"  src={logo}></img>
-          <div className="text-white  fw-20px ms-2">ABC Sprots Center</div>
+          <div className="text-white  fw-20px ms-2">ABC Sports Center</div>
       <Container>
    
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
