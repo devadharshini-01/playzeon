@@ -41,10 +41,7 @@ const AddCenter = ({ active, setActive }) => {
   const data = useSelector((state) => state.center.centergetapi);
   const value = useSelector((state) => state.addcenter.centerpostapi);
 
-  const handleChange = (values) => {
-    // console.log(values,"value from handle change");
-    dispatch(CenterPostAction(values));
-  };
+
   useEffect(() => {
     dispatch(CenterAction());
   }, []);
@@ -55,13 +52,13 @@ const AddCenter = ({ active, setActive }) => {
 
   const schema = yup.object().shape({
     title: yup.string().required("Name is  required "),
-    StreetAddress: yup.string().required("Street is  required "),
-    City: yup.string().required("city is  required "),
-    State: yup.string().min(2, "more than one").required("state is  required "),
-    ZipCode: yup.string().min(5,"more than 5").required("zipCode is  required "),
-    Phonenumber: yup.string().required("Phonenumber is  required "),
+    streetAddress: yup.string().required("Street is  required "),
+    city: yup.string().required("city is  required "),
+    state: yup.string().min(2, "more than one").required("state is  required "),
+    zipCode: yup.string().min(5,"more than 5").required("zipCode is  required "),
+    phonenumber: yup.string().required("Phonenumber is  required "),
     email: yup.string().email().required("email is required "),
-    Suite: yup.string().required("suite is required"),
+    suite: yup.string().required("suite is required"),
   });
   console.log(selectedTimezoneId);
   console.log(timezoneError);
@@ -79,15 +76,17 @@ const AddCenter = ({ active, setActive }) => {
         centerHours: [
           {
             ...values.centerHours[0],
-            weekday: weekday.split(",")// Set the weekday to the desired value
+            weekday: weekday.toString()
           },
         ],
+       
       };
+
 
       console.log(updatedValue, "updatedValue");
       console.log("values123", selectedTimezoneId, values);
       dispatch(CenterPostAction(updatedValue));
-
+     
       navigate("/Center");
     }
   };
@@ -108,17 +107,18 @@ const AddCenter = ({ active, setActive }) => {
           initialValues={{
             displayName: true,
             title: "",
-            StreetAddress: "",
+            streetAddress: "",
 
-            Suite: "",
-            City: "",
+            suite: "",
+            city: "",
             stateProvince: "dr",
-            ZipCode: "",
+            zipCode: "",
+            photos:[],
             email: "",
             organization: {
               id: orgId,
             },
-            Phonenumber: "",
+            phonenumber: "",
             centerHours: [
               {
                 weekday: weekday,
@@ -283,7 +283,7 @@ const AddCenter = ({ active, setActive }) => {
                                     {errors.Phonenumber}
                                   </p>
                                 </Col>
-                                <Col md={4} lg={4}>
+                                <Col md={6} lg={4}>
                                   <Formcontrol
                                     label="Email"
                                     type="text"
@@ -298,7 +298,7 @@ const AddCenter = ({ active, setActive }) => {
                                 </Col>
                               </Row>
                               <Row>
-                                <Col md={4} lg={4}>
+                                <Col md={6} lg={4}>
                                   <Formselect
                                     label="Timezone"
                                     data={data}
@@ -306,6 +306,7 @@ const AddCenter = ({ active, setActive }) => {
                                     mandatory={true}
                                     selectedTimezoneId={selectedTimezoneId}
                                     timezoneError={timezoneError}
+                                 
                                   />
                                 </Col>
                               </Row>
@@ -430,6 +431,7 @@ const AddCenter = ({ active, setActive }) => {
                                           Add
                                         </Button>
                                       </Col>
+                                    
                                     </Row>
                                   </Form>
                                 </Col>

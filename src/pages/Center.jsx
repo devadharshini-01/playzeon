@@ -29,7 +29,7 @@ const Center = ({ active, setActive }) => {
     console.log(orgid);
     axios
       .get(
-        `https://262a-2405-201-e059-b805-e4b7-e07a-11a3-9edb.ngrok-free.app/api/v1/centers?organizationId.equals=${orgid}`,
+        `https://640e-2405-201-e059-b805-187b-1711-d625-a0d9.ngrok-free.app/api/v1/centers?organizationId.equals=${orgid}`,
         {
           headers: {
             "ngrok-skip-browser-warning": "true", 

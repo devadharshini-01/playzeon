@@ -16,7 +16,7 @@ export const DashboardGetAction = (centerId) => async (dispatch) => {
     //     const { data } = await axios.get(`https://gnat-saving-sturgeon.ngrok-free.app/api/account`), { headers: { "ngrok-skip-browser-warning": "true" }, {Authorization:`Bearer ${Token}`} }
     //    // {headers:{Authorization:`Bearer ${Token}`}});
     const { data } = await axios.get(
-        "https://262a-2405-201-e059-b805-e4b7-e07a-11a3-9edb.ngrok-free.app/api/account",
+        "https://640e-2405-201-e059-b805-187b-1711-d625-a0d9.ngrok-free.app/api/account",
         {
           headers: {
             "ngrok-skip-browser-warning": "true",
