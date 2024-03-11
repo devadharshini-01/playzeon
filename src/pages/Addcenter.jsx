@@ -21,7 +21,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { CenterAction, CenterPostAction } from "../redux/action/CenterAction";
 import logo from "../assets/images/addbanner.svg";
 import picture from "../assets/images/addimage.svg";
-
 import "react-datepicker/dist/react-datepicker.css";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
@@ -59,7 +58,7 @@ const AddCenter = ({ active, setActive }) => {
     phonenumber: yup.string().required("Phonenumber is  required "),
     email: yup.string().email().required("email is required "),
     suite: yup.string().required("suite is required"),
-  });
+    });
   console.log(selectedTimezoneId);
   console.log(timezoneError);
 
@@ -79,14 +78,14 @@ const AddCenter = ({ active, setActive }) => {
             weekday: weekday.toString()
           },
         ],
-       
+
       };
 
 
       console.log(updatedValue, "updatedValue");
       console.log("values123", selectedTimezoneId, values);
       dispatch(CenterPostAction(updatedValue));
-     
+
       navigate("/Center");
     }
   };
@@ -210,34 +209,34 @@ const AddCenter = ({ active, setActive }) => {
                                     name="StreetAddress"
                                     values="StreetAddress"
                                     onChange={handleChange}
-                                    isInvalid={!!errors.StreetAddress}
+                                    isInvalid={!!errors.streetAddress}
                                   />
                                   <p className="text-primary">
-                                    {errors.StreetAddress}
+                                    {errors.streetAddress}
                                   </p>
                                 </Col>
                                 <Col md={2} lg={1}>
                                   <Formcontrol
                                     label="Suite"
                                     type="text"
-                                    name="Suite"
-                                    values="Suite"
+                                    name="suite"
+                                    values="suite"
                                     onChange={handleChange}
-                                    isInvalid={!!errors.Suite}
+                                    isInvalid={!!errors.suite}
                                   />
-                                  <p className="text-primary">{errors.Suite}</p>
+                                  <p className="text-primary">{errors.suite}</p>
                                 </Col>
                                 <Col md={2} lg={2}>
                                   <Formcontrol
                                     label="City"
                                     type="text"
                                     mandatory={true}
-                                    name="City"
-                                    values="City"
+                                    name="city"
+                                    values="city"
                                     onChange={handleChange}
-                                    isInvalid={!!errors.City}
+                                    isInvalid={!!errors.city}
                                   />
-                                  <p className="text-primary">{errors.City}</p>
+                                  <p className="text-primary">{errors.city}</p>
                                 </Col>
                                 <Col md={2} lg={2}>
                                   <Formcontrol
@@ -245,25 +244,25 @@ const AddCenter = ({ active, setActive }) => {
                                     type="text"
                                     min={2}
                                     mandatory={true}
-                                    name="State"
-                                    values="State"
+                                    name="state"
+                                    values="state"
                                     onChange={handleChange}
-                                    isInvalid={!!errors.State}
+                                    isInvalid={!!errors.state}
                                   />
-                                  <p className="text-primary">{errors.State}</p>
+                                  <p className="text-primary">{errors.state}</p>
                                 </Col>
                                 <Col md={2} lg={2}>
                                   <Formcontrol
                                     label="Zip"
                                     type="number"
                                     mandatory={true}
-                                    name="ZipCode"
-                                    values="ZipCode"
+                                    name="zipCode"
+                                    values="zipCode"
                                     onChange={handleChange}
-                                    isInvalid={!!errors.ZipCode}
+                                    isInvalid={!!errors.zipCode}
                                   />
                                   <p className="text-primary">
-                                    {errors.ZipCode}
+                                    {errors.zipCode}
                                   </p>
                                 </Col>
                               </Row>
@@ -272,15 +271,15 @@ const AddCenter = ({ active, setActive }) => {
                                   <Phonenumber
                                     label="phone number"
                                     mandatory={true}
-                                    values="Phonenumber"
+                                    values="phonenumber"
                                     type="number"
-                                    name="Phonenumber"
+                                    name="phonenumber"
                                     onChange={handleChange}
-                                    isInvalid={!!errors.Phonenumber}
+                                    isInvalid={!!errors.phonenumber}
                                   />
 
                                   <p className="text-primary">
-                                    {errors.Phonenumber}
+                                    {errors.phonenumber}
                                   </p>
                                 </Col>
                                 <Col md={6} lg={4}>
@@ -306,7 +305,7 @@ const AddCenter = ({ active, setActive }) => {
                                     mandatory={true}
                                     selectedTimezoneId={selectedTimezoneId}
                                     timezoneError={timezoneError}
-                                 
+
                                   />
                                 </Col>
                               </Row>
@@ -396,9 +395,9 @@ const AddCenter = ({ active, setActive }) => {
                                         <DatePicker
                                           className="p-1 border-1 rounded mt-1 "
                                           selected={startDate}
-                                       
+
                                           onChange={(date) =>
-                                            setStartDate(date)
+                                                                                    setStartDate(date)
                                           }
                                           startDateText="Select time"
                                           showTimeSelect
@@ -406,7 +405,7 @@ const AddCenter = ({ active, setActive }) => {
                                           timeIntervals={30}
                                           timeCaption="Time"
                                           dateFormat="h:mm aa"
-                                        />
+                                                                                  />
                                       </Col>
                                       <Col sm={6} md={4} lg={4}>
                                         <DatePicker
@@ -418,7 +417,7 @@ const AddCenter = ({ active, setActive }) => {
                                           timeIntervals={30}
                                           timeCaption="Time"
                                           dateFormat="h:mm aa"
-                                        />
+                                                                                  />
                                       </Col>
                                       <Col md={2} lg={2}>
                                         <Button className="bg-white border-0 text-blue ">
@@ -431,7 +430,7 @@ const AddCenter = ({ active, setActive }) => {
                                           Add
                                         </Button>
                                       </Col>
-                                    
+
                                     </Row>
                                   </Form>
                                 </Col>
