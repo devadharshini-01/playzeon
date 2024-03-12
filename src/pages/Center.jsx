@@ -29,7 +29,7 @@ const Center = ({ active, setActive }) => {
     console.log(orgid);
     axios
       .get(
-        `https://3c6d-2405-201-e059-b805-4906-ef75-fd75-5b81.ngrok-free.app/api/v1/centers?organizationId.equals=${orgid}`,
+        `https://enormous-solely-earwig.ngrok-free.app/api/v1/centers?organizationId.equals=${orgid}`,
         {
           headers: {
             "ngrok-skip-browser-warning": "true", 
@@ -78,7 +78,8 @@ const Center = ({ active, setActive }) => {
                      <p className="text-center text-color">Add Center</p>
                    </Card>
                  </Col>
-                
+        
+              
                  {response?.data?.length ? (
                   response?.data?.map((item) => (
                      <Col lg={3} key={item.id} className="mb-4 ">

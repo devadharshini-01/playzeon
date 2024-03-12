@@ -5,7 +5,8 @@ import Login from "./pages/auth/Login";
 import Center from "./pages/Center";
 import AddCenter from "./pages/AddCenter"
 import { useState } from "react";
-import Facilites from "./pages/Facilites";
+import Facilites from "./pages/Facility";
+import FacilityScreen from "./pages/FacilityScreen";
 
 
 
@@ -17,9 +18,9 @@ const[active,setActive]=useState();
       <Routes>
         <Route path="/" element={<Login />} />
 
+        <Route path="/facility" element={<Facilites active={active} setActive={setActive}/> } />
         <Route path="/center" element={<Center active={active} setActive={setActive}/> } />
         <Route path="add-center" element={<AddCenter active={active} setActive={setActive} />} />
-        <Route path="facilites" element={<Facilites/>}/>
       </Routes>
     </BrowserRouter>
   );

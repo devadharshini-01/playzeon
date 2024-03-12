@@ -16,7 +16,7 @@ import Sidebar from "../component/layout/Sidebar";
 import { Icon } from "@iconify/react";
 import DatePicker from "react-datepicker";
 import { useEffect, useState } from "react";
-
+import moment from "moment";
 import { useSelector, useDispatch } from "react-redux";
 import { CenterAction, CenterPostAction } from "../redux/action/CenterAction";
 import logo from "../assets/images/addbanner.svg";
@@ -30,16 +30,20 @@ const AddCenter = ({ active, setActive }) => {
   const navigate = useNavigate();
   const orgId = localStorage.getItem("orgId");
   const id = localStorage.getItem("id");
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(new Date());
+
   const [selectedTimezoneId, setSelectedTimezoneId] = useState(null);
   const [timezoneError, setTimezoneError] = useState(false);
-  const [weekday, setWeekday] = useState([]);
+  const [centerHours, setCenterHours] = useState([]);
+  const[errors,setErrors]=useState()
+  const [businesshours, setBusinessHours] = useState({
+    startDate: "",
+    endDate: "",
+    weekday: [],
+  });
   const dispatch = useDispatch();
 
   const data = useSelector((state) => state.center.centergetapi);
   const value = useSelector((state) => state.addcenter.centerpostapi);
-
 
   useEffect(() => {
     dispatch(CenterAction());
@@ -54,11 +58,15 @@ const AddCenter = ({ active, setActive }) => {
     streetAddress: yup.string().required("Street is  required "),
     city: yup.string().required("city is  required "),
     state: yup.string().min(2, "more than one").required("state is  required "),
-    zipCode: yup.string().min(5,"more than 5").required("zipCode is  required "),
+    zipCode: yup
+      .string()
+      .min(5, "more than 5")
+      .required("zipCode is  required "),
     phonenumber: yup.string().required("Phonenumber is  required "),
     email: yup.string().email().required("email is required "),
     suite: yup.string().required("suite is required"),
-    });
+    add: yup.string().required("fill all details"),
+  });
   console.log(selectedTimezoneId);
   console.log(timezoneError);
 
@@ -75,12 +83,10 @@ const AddCenter = ({ active, setActive }) => {
         centerHours: [
           {
             ...values.centerHours[0],
-            weekday: weekday.toString()
+            weekday: businesshours.weekday.toString(),
           },
         ],
-
       };
-
 
       console.log(updatedValue, "updatedValue");
       console.log("values123", selectedTimezoneId, values);
@@ -90,13 +96,22 @@ const AddCenter = ({ active, setActive }) => {
     }
   };
   const handleCheck = (event) => {
-    if (event.target.checked) setWeekday((pre) => [...pre, event.target.value]);
+    if (event.target.checked)
+      setBusinessHours({
+        ...businesshours,
+        weekday: [...businesshours.weekday, event.target.value],
+      });
     else {
-      setWeekday((pre) => pre.filter((item) => item !== event.target.value));
+      setBusinessHours({
+        ...businesshours,
+        weekday: businesshours.weekday.filter(
+          (item) => item !== event.target.value
+        ),
+      });
     }
   };
+  console.log(businesshours, "bus");
 
-  console.log(weekday, "weekday");
   return (
     <>
       <div className="overflow-hidden">
@@ -106,13 +121,14 @@ const AddCenter = ({ active, setActive }) => {
           initialValues={{
             displayName: true,
             title: "",
+            add: "",
             streetAddress: "",
 
             suite: "",
             city: "",
             stateProvince: "dr",
             zipCode: "",
-            photos:[],
+            photos: [],
             email: "",
             organization: {
               id: orgId,
@@ -120,9 +136,15 @@ const AddCenter = ({ active, setActive }) => {
             phonenumber: "",
             centerHours: [
               {
-                weekday: weekday,
-                startTime:"12:00 AM",
-                endTime: "11:30 PM",
+                weekday: businesshours.weekday,
+                startTime: moment(
+                  businesshours.startDate,
+                  "yyyy-mm-ddthh:mm:ssz"
+                ).format("LT"),
+                endTime: moment(
+                  businesshours.endDate,
+                  "yyyy-mm-ddthh:mm:ssz"
+                ).format("LT"),
                 createdAt: "2023-10-14T05:46:12Z",
                 updatedAt: "2023-10-14T05:46:12Z",
               },
@@ -206,8 +228,8 @@ const AddCenter = ({ active, setActive }) => {
                                     label="Street"
                                     type="text"
                                     mandatory={true}
-                                    name="StreetAddress"
-                                    values="StreetAddress"
+                                    name="streetAddress"
+                                    values="streetAddress"
                                     onChange={handleChange}
                                     isInvalid={!!errors.streetAddress}
                                   />
@@ -305,7 +327,6 @@ const AddCenter = ({ active, setActive }) => {
                                     mandatory={true}
                                     selectedTimezoneId={selectedTimezoneId}
                                     timezoneError={timezoneError}
-
                                   />
                                 </Col>
                               </Row>
@@ -325,7 +346,9 @@ const AddCenter = ({ active, setActive }) => {
                                           label="Sun"
                                           name="sun"
                                           value="sun"
-                                          checked={weekday.includes("sun")}
+                                          checked={businesshours.weekday.includes(
+                                            "sun"
+                                          )}
                                           onChange={handleCheck}
                                         />
                                       </Col>
@@ -335,7 +358,9 @@ const AddCenter = ({ active, setActive }) => {
                                           label="Mon"
                                           name="Mon"
                                           value="Mon"
-                                          checked={weekday.includes("Mon")}
+                                          checked={businesshours.weekday.includes(
+                                            "Mon"
+                                          )}
                                           onChange={handleCheck}
                                         />
                                       </Col>
@@ -345,7 +370,9 @@ const AddCenter = ({ active, setActive }) => {
                                           label="Tue"
                                           name="Tue"
                                           value="Tue"
-                                          checked={weekday.includes("Tue")}
+                                          checked={businesshours.weekday.includes(
+                                            "Tue"
+                                          )}
                                           onChange={handleCheck}
                                         />
                                       </Col>
@@ -355,7 +382,9 @@ const AddCenter = ({ active, setActive }) => {
                                           label="Wed"
                                           name="Wed"
                                           value="Wed"
-                                          checked={weekday.includes("Wed")}
+                                          checked={businesshours.weekday.includes(
+                                            "Wed"
+                                          )}
                                           onChange={handleCheck}
                                         />
                                       </Col>
@@ -365,7 +394,9 @@ const AddCenter = ({ active, setActive }) => {
                                           label="Thu"
                                           name="Thu"
                                           value="Thu"
-                                          checked={weekday.includes("Thu")}
+                                          checked={businesshours.weekday.includes(
+                                            "Thu"
+                                          )}
                                           onChange={handleCheck}
                                         />
                                       </Col>
@@ -375,7 +406,9 @@ const AddCenter = ({ active, setActive }) => {
                                           label="Fri"
                                           name="Fri"
                                           value="Fri"
-                                          checked={weekday.includes("Fri")}
+                                          checked={businesshours.weekday.includes(
+                                            "Fri"
+                                          )}
                                           onChange={handleCheck}
                                         />
                                       </Col>
@@ -385,7 +418,9 @@ const AddCenter = ({ active, setActive }) => {
                                           label="Sat"
                                           name="Sat"
                                           value="Sat"
-                                          checked={weekday.includes("Sat")}
+                                          checked={businesshours.weekday.includes(
+                                            "Sat"
+                                          )}
                                           onChange={handleCheck}
                                         />
                                       </Col>
@@ -394,10 +429,12 @@ const AddCenter = ({ active, setActive }) => {
                                       <Col sm={6} md={4} lg={4}>
                                         <DatePicker
                                           className="p-1 border-1 rounded mt-1 "
-                                          selected={startDate}
-
+                                          selected={businesshours.startDate}
                                           onChange={(date) =>
-                                                                                    setStartDate(date)
+                                            setBusinessHours({
+                                              ...businesshours,
+                                              startDate: date,
+                                            })
                                           }
                                           startDateText="Select time"
                                           showTimeSelect
@@ -405,22 +442,49 @@ const AddCenter = ({ active, setActive }) => {
                                           timeIntervals={30}
                                           timeCaption="Time"
                                           dateFormat="h:mm aa"
-                                                                                  />
+                                        />
                                       </Col>
                                       <Col sm={6} md={4} lg={4}>
                                         <DatePicker
                                           className="p-1 mt-1 rounded border-1 "
-                                          selected={endDate}
-                                          onChange={(date) => setEndDate(date)}
+                                          selected={businesshours.endDate}
+                                          onChange={(date) =>
+                                            setBusinessHours({
+                                              ...businesshours,
+                                              endDate: date,
+                                            })
+                                          }
                                           showTimeSelect
                                           showTimeSelectOnly
                                           timeIntervals={30}
                                           timeCaption="Time"
                                           dateFormat="h:mm aa"
-                                                                                  />
+                                        />
                                       </Col>
+                                      {console.log(centerHours, "centerHours")}
                                       <Col md={2} lg={2}>
-                                        <Button className="bg-white border-0 text-blue ">
+                                        <Button
+                                          onClick={() => {
+                                            if (
+                                              businesshours.startDate != "" &&
+                                              businesshours.endDate != "" &&
+                                              businesshours.weekday.length
+                                            ){
+                                              setBusinessHours({
+                                                weekday: [],
+                                                endDate: "",
+                                                endDate: "",
+                                              })
+                                            }else{
+                                              // setError(" Some required fields are empty.");
+                                            }
+                                             ;
+                                             
+                                          }}
+                                     
+
+                                          className="bg-white border-0 text-blue "
+                                        >
                                           <Icon
                                             className="mb-1"
                                             icon="gridicons:add"
@@ -430,8 +494,22 @@ const AddCenter = ({ active, setActive }) => {
                                           Add
                                         </Button>
                                       </Col>
-
                                     </Row>
+                                    {centerHours.map((item, index) => (
+                                      <div key={index}>
+                                        <p>
+                                          {item.weekday} :
+                                          {moment(
+                                            item.startDate,
+                                            "yyyy-mm-ddthh:mm:ssz"
+                                          ).format("LT")}{" "}
+                                          {moment(
+                                            item.endDate,
+                                            "yyyy-mm-ddthh:mm:ssz"
+                                          ).format("LT")}
+                                        </p>
+                                      </div>
+                                    ))}
                                   </Form>
                                 </Col>
                               </Row>
