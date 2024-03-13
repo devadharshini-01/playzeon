@@ -164,6 +164,7 @@ const AddCenter = ({ active, setActive }) => {
           }}
         >
           {({ handleSubmit, handleChange, values, errors }) => (
+               
             console.log(errors),
             (
               <Form noValidate onSubmit={handleSubmit}>
@@ -463,28 +464,25 @@ const AddCenter = ({ active, setActive }) => {
                                       </Col>
                                       {console.log(centerHours, "centerHours")}
                                       <Col md={2} lg={2}>
-                                        <Button
-                                          onClick={() => {
-                                            if (
-                                              businesshours.startDate != "" &&
-                                              businesshours.endDate != "" &&
-                                              businesshours.weekday.length
-                                            ){
-                                              setBusinessHours({
-                                                weekday: [],
-                                                endDate: "",
-                                                endDate: "",
-                                              })
-                                            }else{
-                                              // setError(" Some required fields are empty.");
-                                            }
-                                             ;
-                                             
-                                          }}
-                                     
-
-                                          className="bg-white border-0 text-blue "
-                                        >
+                                      <Button
+                  onClick={() => {
+                    if (
+                      businesshours.startDate !== "" &&
+                      businesshours.endDate !== "" &&
+                      businesshours.weekday.length > 0
+                    ) 
+                      setBusinessHours({
+                        weekday: [],
+                        startDate: "",
+                        endDate: "",
+                      });
+                    
+          
+                 
+                  }}
+                
+                  className="bg-white border-0 text-blue"
+                >
                                           <Icon
                                             className="mb-1"
                                             icon="gridicons:add"
@@ -493,6 +491,8 @@ const AddCenter = ({ active, setActive }) => {
                                           />
                                           Add
                                         </Button>
+                                        
+
                                       </Col>
                                     </Row>
                                     {centerHours.map((item, index) => (

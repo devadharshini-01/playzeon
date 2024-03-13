@@ -27,7 +27,7 @@ export const postReducer = (value = initialValues, action) => {
   switch (action?.type) {
     case centerpostaction.REQUEST:
       return { centerpostapi: action?.payload };
-    case centertconstants.SUCCESS:
+    case centerpostaction.SUCCESS:
       return { centerpostapi: action?.payload };
     case centerpostaction.ERROR:
       return { centerpostapi: action?.payload };

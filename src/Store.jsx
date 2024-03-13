@@ -4,10 +4,12 @@ import {thunk} from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { dashboardReducer } from './redux/reducer/DashboardReducerapi';
 import { centerReducer, postReducer } from './redux/reducer/CenterReducerapi';
+import { FacilityReducer } from './redux/reducer/FacilityReducerapi';
 const reducer = combineReducers({
     dashboard: dashboardReducer,
     center:centerReducer,
     addcenter:postReducer,
+    facility: FacilityReducer,
 });
 
 const initialState = {};

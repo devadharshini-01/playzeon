@@ -20,11 +20,11 @@ const Facility = ({ active, setActive }) => {
               <hr></hr>
               <Card className="bg-white border-0">
                 <Row>
-                  <Col sm={5} md={5}>
+                  <Col sm={6} md={6}>
                     <h5>Football field</h5>
                   </Col>
-                  <Col sm={2} md={2}>
-                    <Button className="bg-white border-0 text-blue justify-content-end ">
+                  <Col>
+                    <Button className="bg-white border-0 text-blue ">
                       <Icon
                         className="mb-1"
                         icon="gridicons:add"
@@ -35,45 +35,24 @@ const Facility = ({ active, setActive }) => {
                     </Button>
        
                   </Col>
-                  {/* <Table striped bordered hover>
-      <thead>
-        <tr>
-          <th>S.no</th>
-          <th>Name</th>
-          <th>Features</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
-      </tbody>
-    </Table> */}
+           
 
                 </Row>
                 <Row>
-                    <Col>
-                    <p>S.no</p>
-                    </Col>
-                    <Col>
-                    <p>Name</p>
-                    </Col>
+                  <Col>
+                  S.no
+                  </Col>
+                  <Col>
+                  Name
+                  </Col>
+                  <Col>
+                  Features
+                  </Col>
+                  <Col>
+                  Actions
+                  </Col>
                 </Row>
+              
               </Card>
             </Col>
           </Row>

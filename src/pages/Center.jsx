@@ -29,7 +29,7 @@ const Center = ({ active, setActive }) => {
     console.log(orgid);
     axios
       .get(
-        `https://enormous-solely-earwig.ngrok-free.app/api/v1/centers?organizationId.equals=${orgid}`,
+        `https://362d-2405-201-e059-b805-d82e-8e9-a77a-db15.ngrok-free.app/api/v1/centers?organizationId.equals=${orgid}`,
         {
           headers: {
             "ngrok-skip-browser-warning": "true", 

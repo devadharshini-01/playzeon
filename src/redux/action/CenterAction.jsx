@@ -11,7 +11,7 @@ export const CenterAction = () => async (dispatch) => {
   });
   try {
     const { data } = await axios.get(
-      `https://enormous-solely-earwig.ngrok-free.app/api/timezones `,
+      `https://362d-2405-201-e059-b805-d82e-8e9-a77a-db15.ngrok-free.app/api/timezones `,
       {
         headers: {
           "ngrok-skip-browser-warning": "true",
@@ -41,7 +41,7 @@ export const CenterPostAction=(values)=>async(dispatch)=>{
   })
  try{
   console.log("test ");
-  const {value} = await axios.post(`https://enormous-solely-earwig.ngrok-free.app/api/v1/centers`,values,
+  const {value} = await axios.post(`https://362d-2405-201-e059-b805-d82e-8e9-a77a-db15.ngrok-free.app/api/v1/centers`,values,
   {
     headers: {
       "ngrok-skip-browser-warning": "true",
